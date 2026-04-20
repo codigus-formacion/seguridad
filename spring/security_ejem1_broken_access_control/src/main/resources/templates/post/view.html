@@ -1,0 +1,22 @@
+{{>partials/header}}
+		
+<div>
+  <h2>{{post.title}}</h2>
+  <p><em>By {{post.author.name}}</em></p>
+  <div>
+    <p>{{post.text}}</p>
+  </div>
+  <p>
+    {{#isOwner}}
+    <form action="/removepost/{{post.id}}" method="post">
+      <input type="submit" value="Remove">
+      <input type="hidden" name="_csrf" value="{{token}}"/>
+    </form>
+    <button onclick="location.href='/editpost/{{post.id}}'">Edit</button>
+		{{/isOwner}}
+    <br>
+    <button onclick="location.href='/'">Back to all posts</button>
+  </p>
+  </div>		
+
+{{>partials/footer}}

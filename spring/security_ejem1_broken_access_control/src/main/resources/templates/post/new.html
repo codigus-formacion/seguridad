@@ -1,0 +1,20 @@
+{{>partials/header}}
+
+  <form action="/newpost" method="post">
+  <h2>New Post</h2>
+  <div>
+    <label>Title: </label>
+    <input name="title" placeholder="title"/>
+  </div>
+  <div>
+    <label>Text: </label>
+    <textarea name="text" placeholder="text"></textarea>
+  </div>
+  <input type="hidden" name="_csrf" value="{{token}}"/>
+  <p>
+    <button onclick="location.href='/'; return false;">Cancel</button>
+    <input type="submit" value="Save"/>
+  </p>
+  </form>
+  
+{{>partials/footer}}

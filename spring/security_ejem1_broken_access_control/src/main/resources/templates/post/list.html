@@ -1,0 +1,14 @@
+{{>partials/header}}
+
+		<h2>Posts</h2>
+		<ul class="items">
+			{{#posts}}
+			<li><a href="/posts/{{id}}">{{title}}</a></li>
+			{{/posts}}
+		</ul>
+
+		{{#logged}}
+		<button onclick="location.href='/newpost'">New post</button>
+		{{/logged}}
+
+{{>partials/footer}}

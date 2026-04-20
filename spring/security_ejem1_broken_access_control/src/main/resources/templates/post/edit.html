@@ -1,0 +1,21 @@
+{{>partials/header}}
+
+  <form action="/editpost" method="post">
+  <h2>Edit Post "{{post.title}}"</h2>
+  <input type="hidden" name="id" value="{{post.id}}"/>
+  <div>
+    <label>Title: </label>
+    <input name="title" value="{{post.title}}" placeholder="title"/>
+  </div>
+  <div>
+    <label>Text: </label>
+    <textarea name="text" placeholder="text">{{post.text}}</textarea>
+  </div>
+   <input type="hidden" name="_csrf" value="{{token}}"/>
+  <p>
+    <button onclick="location.href='/posts/{{post.id}}'; return false;">Cancel</button>
+    <input type="submit" value="Save"/>
+  </p>
+  </form>
+  
+{{>partials/footer}}
