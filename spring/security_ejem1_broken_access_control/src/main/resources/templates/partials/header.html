@@ -26,7 +26,7 @@
         <form action="/login" method="post" class="d-flex ms-auto gap-2 align-items-center">
           <input type="text" class="form-control form-control-sm" name="username" placeholder="Username">
           <input type="password" class="form-control form-control-sm" name="password" placeholder="Password">
-          <button type="submit" class="btn btn-primary btn-sm">Sign In</button>
+          <button type="submit" class="btn btn-primary btn-sm" style="min-width: 5em">Sign In</button>
           <input type="hidden" name="_csrf" value="{{token}}" />
         </form>
         {{/logged}}

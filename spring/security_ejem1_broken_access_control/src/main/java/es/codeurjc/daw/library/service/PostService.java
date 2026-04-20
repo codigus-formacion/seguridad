@@ -15,6 +15,9 @@ public class PostService {
 	@Autowired
 	private PostRepository repository;
 
+	@Autowired
+	private UserService userService;
+
 	public Optional<Post> findById(long id) {
 		return repository.findById(id);
 	}
@@ -28,6 +31,7 @@ public class PostService {
 	}
 
 	public void save(Post post) {
+		post.setAuthor(userService.getLoggedUser().get());
 		repository.save(post);
 	}
 

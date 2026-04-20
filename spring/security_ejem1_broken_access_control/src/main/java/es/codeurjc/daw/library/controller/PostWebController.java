@@ -52,10 +52,10 @@ public class PostWebController {
 		Optional<Post> post = service.findById(id);
 		if (post.isPresent()) {
 			model.addAttribute("post", post.get());
-			User user = userService.getLoggedUser();
-			if(user != null) {
-				String currentUsername = user.getName();
-				boolean isOwner = currentUsername.equals(post.get().getAuthor().getName()) || user.getRoles().contains("ADMIN");
+			Optional<User> user = userService.getLoggedUser();
+			if(user.isPresent()) {
+				String currentUsername = user.get().getName();
+				boolean isOwner = currentUsername.equals(post.get().getAuthor().getName()) || user.get().getRoles().contains("ADMIN");
 				model.addAttribute("isOwner", isOwner);
 			}else {
 				model.addAttribute("isOwner", false);
@@ -85,8 +85,6 @@ public class PostWebController {
 
 	@PostMapping("/newpost")
 	public String newPostProcess(Model model, Post post, Principal principal) {
-		User author = userService.getLoggedUser();
-		post.setAuthor(author);
 		service.save(post);
 		model.addAttribute("postId", post.getId());
 		return "post/created-message";
