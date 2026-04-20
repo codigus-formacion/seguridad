@@ -27,8 +27,8 @@ public class DatabaseInitializer {
 
 		// Sample users
 
-		User user = new User("user", passwordEncoder.encode("pass"), "USER");
-		User user2 = new User("user2", passwordEncoder.encode("pass"), "USER");
+		User user = new User("michel", passwordEncoder.encode("pass"), "USER");
+		User user2 = new User("oscar", passwordEncoder.encode("pass"), "USER");
 		User admin = new User("admin", passwordEncoder.encode("adminpass"), "USER", "ADMIN");
 		userRepository.save(user);
 		userRepository.save(user2);
