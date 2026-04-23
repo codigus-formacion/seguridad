@@ -23,16 +23,16 @@ public class ImageController {
 	private static final Path IMAGES_FOLDER = Paths.get(System.getProperty("user.dir"), "images");
 
 	@PostMapping("/upload_image")
-	public String uploadImage(@RequestParam String imageName, @RequestParam MultipartFile image, Model model)
+	public String uploadImage(@RequestParam MultipartFile image, Model model)
 			throws IOException {
 
 		Files.createDirectories(IMAGES_FOLDER);
 		
-		Path imagePath = IMAGES_FOLDER.resolve(imageName);
+		Path imagePath = IMAGES_FOLDER.resolve(image.getOriginalFilename());
 		
 		image.transferTo(imagePath);
 
-		model.addAttribute("imageName", imageName);
+		model.addAttribute("imageName", image.getOriginalFilename());
 
 		return "uploaded_image";
 	}
