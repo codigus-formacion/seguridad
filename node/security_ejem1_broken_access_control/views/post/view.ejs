@@ -1,0 +1,22 @@
+<%- include('../partials/header') %>
+
+<div class="card">
+  <div class="card-body">
+    <h2 class="card-title"><%= post.title %></h2>
+    <h6 class="card-subtitle mb-3 text-muted">By <%= post.author ? post.author.name : 'unknown' %></h6>
+    <p class="card-text"><%= post.text %></p>
+  </div>
+  <div class="card-footer d-flex justify-content-between align-items-center">
+    <a href="/" class="btn btn-secondary">Back to all posts</a>
+    <% if (isOwner) { %>
+      <div class="d-flex gap-2">
+        <a href="/editpost/<%= post.id %>" class="btn btn-warning">Edit</a>
+        <form action="/removepost/<%= post.id %>" method="post">
+          <button type="submit" class="btn btn-danger">Remove</button>
+        </form>
+      </div>
+    <% } %>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>

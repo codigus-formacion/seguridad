@@ -1,0 +1,13 @@
+{
+  "name": "security_ejem3_xss_reflected",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Reflected XSS example - Node/Express equivalent of the Spring Boot version",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

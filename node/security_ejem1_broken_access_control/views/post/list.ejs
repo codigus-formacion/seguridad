@@ -1,0 +1,20 @@
+<%- include('../partials/header') %>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h1>Posts</h1>
+  <% if (logged) { %>
+    <a href="/newpost" class="btn btn-success">+ New Post</a>
+  <% } %>
+</div>
+
+<% if (posts.length === 0) { %>
+  <div class="alert alert-info">There are no posts yet.</div>
+<% } else { %>
+  <div class="list-group">
+    <% posts.forEach(function(post) { %>
+      <a href="/posts/<%= post.id %>" class="list-group-item list-group-item-action"><%= post.title %></a>
+    <% }) %>
+  </div>
+<% } %>
+
+<%- include('../partials/footer') %>
