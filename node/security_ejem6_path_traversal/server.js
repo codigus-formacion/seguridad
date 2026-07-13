@@ -12,13 +12,18 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public'));
 
-// No filename sanitization on upload either, mirroring the Spring example's
-// IMAGES_FOLDER.resolve(image.getOriginalFilename()).
+// busboy (used internally by multer) runs the multipart "filename" through
+// basename() by default, which would quietly block traversal here. Passing
+// preservePath: true disables that and hands us the filename exactly as the
+// client sent it in the Content-Disposition header - so intercepting the
+// upload request with a proxy and rewriting filename="../../../../tmp/x.txt"
+// escapes the images directory on write, mirroring the Spring original
+// (IMAGES_FOLDER.resolve(image.getOriginalFilename()), no sanitization at all).
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, IMAGES_FOLDER),
   filename: (req, file, cb) => cb(null, file.originalname),
 });
-const upload = multer({ storage });
+const upload = multer({ storage, preservePath: true });
 
 app.post('/upload_image', upload.single('image'), (req, res) => {
   res.render('uploaded_image', { imageName: req.file.originalname });
