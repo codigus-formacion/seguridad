@@ -103,9 +103,5 @@ Esto devuelve el contenido de `/etc/hostname` (o cualquier fichero legible por e
 **Vulnerabilidad — escritura (subida arbitraria):** el endpoint de subida (`POST /upload_image`) usa el nombre de fichero recibido en la petición (`Content-Disposition: filename=...`) sin sanear, y lo une al directorio de imágenes de la misma forma insegura que la lectura.
 
 **Cómo explotarla (escritura):** un formulario HTML normal solo permite elegir el fichero (el navegador envía el nombre base, sin rutas), así que hay que **interceptar la petición** con un proxy (Burp, ZAP, mitmproxy...) o construirla a mano, y modificar el `filename` del `Content-Disposition` del `multipart/form-data` para incluir una ruta traversal. Con curl se puede simular la intercepción indicando el `filename` directamente:
-```bash
-curl -F "image=@/etc/hostname;filename=../../../../../../../../../../tmp/pwned.txt" \
-  http://localhost:<PUERTO>/upload_image
-cat /tmp/pwned.txt   # el fichero ha escrito fuera de images/
-```
+
 Una subida normal desde el navegador (sin manipular la petición) sigue guardando el fichero dentro de `images/` con normalidad.
