@@ -90,7 +90,7 @@ http://localhost:<PUERTO>/#<img src=x onerror=alert(document.cookie)>
 
 ## 6. `security_ejem6_path_traversal` — Path Traversal (lectura y escritura arbitraria)
 
-Directorio de imágenes: `images/` (con `me.jpg` de ejemplo ya incluido).
+Directorio de imágenes: `images/`
 
 **Vulnerabilidad — lectura (LFI):** `GET /download_image?imageName=...` resuelve la ruta uniendo `imageName` al directorio de imágenes sin comprobar que el resultado siga dentro de `images/`.
 

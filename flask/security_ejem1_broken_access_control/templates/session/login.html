@@ -1,0 +1,20 @@
+{% include 'partials/header.html' %}
+
+<div class="card">
+  <div class="card-body">
+    <h2 class="card-title">Sign In</h2>
+    <form action="/login" method="post">
+      <div class="mb-3">
+        <label class="form-label">Username</label>
+        <input type="text" name="username" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" name="password" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Sign In</button>
+    </form>
+  </div>
+</div>
+
+{% include 'partials/footer.html' %}
