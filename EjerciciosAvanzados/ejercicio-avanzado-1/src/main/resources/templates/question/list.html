@@ -1,0 +1,28 @@
+{{>header}}
+<div class="container mt-5">
+    <h1>HeapHelp</h1>
+    <p>Bienvenido a HeapHelp, la plataforma de preguntas y respuestas para programadores.</p>
+    <a href="/questions/new" class="btn btn-primary mb-3">Nueva Pregunta</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Lenguaje</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#questions}}
+            <tr>
+                <td><a href="/questions/view/{{id}}">{{title}}</a></td>
+                <td>{{language}}</td>
+                <td>
+                    <a href="/questions/edit/{{id}}" class="btn btn-sm btn-warning">Editar</a>
+                    <a href="/questions/delete/{{id}}" class="btn btn-sm btn-danger ms-2">Eliminar</a>
+                </td>
+            </tr>
+            {{/questions}}
+        </tbody>
+    </table>
+</div>
+{{>footer}}

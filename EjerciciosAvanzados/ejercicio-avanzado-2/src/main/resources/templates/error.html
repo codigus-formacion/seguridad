@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Error {{status}} - Post Board</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container medium">
+        <div class="error-page">
+            <h1>Error {{status}}</h1>
+            
+            {{#error}}
+            <div class="error-box">
+                <h2>{{error}}</h2>
+            </div>
+            {{/error}}
+            
+            {{#message}}
+            <p class="error-message">{{message}}</p>
+            {{/message}}
+            
+            {{^message}}
+            <p class="error-message">An unexpected error occurred.</p>
+            {{/message}}
+            
+            <div class="error-actions">
+                <a href="/" class="btn">← Go to Home</a>
+                <a href="javascript:history.back()" class="btn btn-secondary">Go Back</a>
+            </div>
+        </div>
+    </div>
+{{> footer}}

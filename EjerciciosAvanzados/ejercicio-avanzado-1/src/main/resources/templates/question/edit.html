@@ -1,0 +1,32 @@
+{{>header}}
+<div class="container mt-5">
+    <h1>Editar Pregunta</h1>
+    <form action="/questions/edit" method="post">
+        <input type="hidden" name="id" value="{{question.id}}">
+        <div class="mb-3">
+            <label for="title" class="form-label">Título:</label>
+            <input type="text" class="form-control" id="title" name="title" value="{{question.title}}" required>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Descripción:</label>
+            <textarea class="form-control" id="description" name="description">{{question.description}}</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="code" class="form-label">Código:</label>
+            <textarea class="form-control" id="code" name="code">{{question.code}}</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="language" class="form-label">Lenguaje:</label>
+            <select class="form-select" id="language" name="language" required>
+                <option value="java">Java</option>
+                <option value="python">Python</option>
+                <option value="HTML">HTML</option>
+                <option value="js">JavaScript</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        <a href="/questions/view/{{question.id}}" class="btn btn-secondary ms-2">Volver a la pregunta</a>
+        <a href="/" class="btn btn-secondary ms-2">Volver a la lista</a>
+    </form>
+</div>
+{{>footer}}

@@ -1,0 +1,48 @@
+{{>header}}
+<div class="container mt-5">
+    <h1>{{question.title}}</h1>
+    <p><b>Descripción:</b> {{question.description}}</p>
+    <p><b>Código:</b></p>
+    <pre>{{{question.code}}}</pre>
+
+    <div class="mt-3">
+        <a href="/questions/edit/{{question.id}}" class="btn btn-info">Editar Pregunta</a>
+        <!-- Eliminar pregunta -->
+        <a href="/questions/delete/{{question.id}}" class="btn btn-danger ms-2">Eliminar Pregunta</a>
+        <a href="/" class="btn btn-secondary ms-2">Volver a la lista</a>
+    </div>
+
+    <!-- Formulario para añadir una nueva respuesta -->
+    <h2 class="mt-4">Nueva respuesta</h2>
+    <form action="/questions/{{question.id}}/answers/new" method="post">
+        <div class="mb-3">
+            <label for="text" class="form-label">Añade una nueva respuesta:</label>
+            <textarea class="form-control" id="text" name="text" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Guardar Respuesta</button>
+    </form>
+    
+    <!-- Lista de respuesta -->
+    <h2 class="mt-4">Respuestas</h2>
+    <ul class="list-group">
+        {{#question.answers}}
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                {{text}}
+            </div>
+            <div>
+                <form action="/questions/{{question.id}}/answers/{{id}}/delete" method="post" class="d-inline">
+                    <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                </form>
+                <!-- <a href="/answers/delete/{{id}}" class="btn btn-sm btn-danger ms-2">Eliminar</a> -->
+            </div>
+        </li>
+        {{/question.answers}}
+    </ul>
+    {{^question.answers}}
+    <p>No hay respuestas para esta pregunta.</p>
+    {{/question.answers}}
+
+    
+</div>
+{{>footer}}

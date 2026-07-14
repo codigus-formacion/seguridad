@@ -1,8 +1,17 @@
-# seguridad
+# Seguridad Web - Ejemplos y ejercicios de vulnerabilidades
 
 Ejemplos didácticos de aplicaciones web con vulnerabilidades intencionadas, reimplementados en distintas tecnologías (`spring/`, `node/`, `flask/`). Los 6 ejemplos son equivalentes entre carpetas: mismas vulnerabilidades, mismas rutas/parámetros en la medida de lo posible.
 
 Para instrucciones de instalación y puertos de cada stack, consulta el README de la carpeta correspondiente (p. ej. [node/README.md](node/README.md)). Este documento describe, de forma común a todas las implementaciones, en qué consiste cada vulnerabilidad y cómo explotarla. Sustituye `<PUERTO>` por el puerto real indicado en el README de la implementación que estés usando.
+
+---
+
+## Ejercicios simples propuestos
+
+Para cada ejemplo de vulnerabilidad, se propone al alumno:
+- Lanzar la aplicación web y comprobar que funciona
+- Reproducir la vulnerabilidad siguiendo las instrucciones de explotación indicadas en este documento
+- Proponer una solución para mitigar la vulnerabilidad con cambios en el código de la aplicación
 
 ---
 

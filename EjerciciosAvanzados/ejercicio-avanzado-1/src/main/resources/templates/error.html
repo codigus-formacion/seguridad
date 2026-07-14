@@ -1,0 +1,33 @@
+{{>header}}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm border-danger">
+                <div class="card-body text-center p-5">
+                    <h1 class="card-title text-danger">¡Oops! Ha ocurrido un error.</h1>
+                    <p class="card-text lead">Lo sentimos, se ha producido un problema inesperado en la aplicación.</p>
+
+                    {{#timestamp}}
+                    <p class="card-text"><strong>Fecha y Hora:</strong> <span>{{timestamp}}</span></p>
+                    {{/timestamp}}
+                    {{#status}}
+                    <p class="card-text"><strong>Estado HTTP:</strong> <span>{{status}}</span> <span>{{error}}</span></p>
+                    {{/status}}
+                    {{#path}}
+                    <p class="card-text"><strong>Ruta:</strong> <span>{{path}}</span></p>
+                    {{/path}}
+                    {{#message}}
+                    <p class="card-text"><strong>Mensaje:</strong> <span>{{message}}</span></p>
+                    {{/message}}
+                    {{#trace}}
+                    <h2 class="mt-4 text-muted">Detalles del Error (StackTrace):</h2>
+                    <pre class="alert alert-secondary p-3 rounded"><code>{{trace}}</code></pre>
+                    {{/trace}}
+
+                    <a href="/" class="btn btn-primary mt-3">Volver a la página principal</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{>footer}}
